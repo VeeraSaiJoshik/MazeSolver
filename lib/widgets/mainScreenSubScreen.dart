@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mindmystery/pages/homePage.dart';
+import 'package:mindmystery/pages/NavigationPage.dart';
 
 
 class MainScreenSubScreen extends StatefulWidget {
