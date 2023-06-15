@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:mindmystery/pages/homePage.dart';
 import 'package:mindmystery/widgets/mainScreenSubScreen.dart';
 
-enum DifferentPages { home, play, account, settings }
+enum DifferentPages { home, discover, account, settings }
 
 class NavigationPage extends StatefulWidget {
   const NavigationPage({super.key});
@@ -55,7 +55,7 @@ class NavigationPageState extends State<NavigationPage> {
               child: Stack(
                 children: [
                   MainScreenSubScreen(HomePage(),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.home, previousElementAnimationComplete,isAnimating, onEnd),
-                  MainScreenSubScreen(Center(child: Text("Play Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.play, previousElementAnimationComplete,isAnimating, onEnd),
+                  MainScreenSubScreen(Center(child: Text("Play Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.discover, previousElementAnimationComplete,isAnimating, onEnd),
                   MainScreenSubScreen(Center(child: Text("Account Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.account, previousElementAnimationComplete,isAnimating, onEnd),
                   MainScreenSubScreen(Center(child: Text("Setting Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.settings, previousElementAnimationComplete,isAnimating, onEnd),
                 ],
@@ -129,9 +129,9 @@ class NavigationPageState extends State<NavigationPage> {
                             Expanded(child: Container()),
                             InkWell(
                               onTap: () {
-                               if(currentPage != DifferentPages.play){
+                               if(currentPage != DifferentPages.discover){
                                   setState(() {
-                                    currentPage = DifferentPages.play;
+                                    currentPage = DifferentPages.discover;
                                     isAnimating = true;
                                   });
                                 }
@@ -141,7 +141,7 @@ class NavigationPageState extends State<NavigationPage> {
                                   height: height * 0.1 * 0.55,
                                   width: height * 0.1 * 0.55 / 38 * 36,
                                   decoration: BoxDecoration(
-                                      color: currentPage == DifferentPages.play
+                                      color: currentPage == DifferentPages.discover
                                           ? Color(0xFF171920)
                                           : Colors.transparent,
                                       borderRadius: BorderRadius.circular(7)),
@@ -153,7 +153,7 @@ class NavigationPageState extends State<NavigationPage> {
                                         children: [
                                           AnimatedOpacity(
                                             opacity: currentPage ==
-                                                    DifferentPages.play
+                                                    DifferentPages.discover
                                                 ? 1
                                                 : 0,
                                             duration:
@@ -163,7 +163,7 @@ class NavigationPageState extends State<NavigationPage> {
                                           ),
                                           AnimatedOpacity(
                                             opacity: currentPage ==
-                                                    DifferentPages.play
+                                                    DifferentPages.discover
                                                 ? 0
                                                 : 1,
                                             duration:
