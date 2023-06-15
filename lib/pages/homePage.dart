@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:mindmystery/widgets/mainScreenSubScreen.dart';
 
 enum DifferentPages { home, play, account, settings }
 
@@ -16,7 +17,18 @@ class _HomePageState extends State<HomePage> {
     currentPage = DifferentPages.home;
     super.initState();
   }
-
+  bool previousElementAnimationComplete = false;
+  bool isAnimating = false;
+  void onEnd(DifferentPages callingPageType){
+    setState(() {
+      if(callingPageType == currentPage){
+        previousElementAnimationComplete = false;
+      }else{
+        previousElementAnimationComplete = true;
+        isAnimating = false;
+      }
+    });
+  }
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -32,6 +44,22 @@ class _HomePageState extends State<HomePage> {
               Color(0xFF000410),
               Color(0xFF000410),
             ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
+          ),
+          Positioned(
+            left: 0,
+            bottom: height * 0.1 * 1.35,
+            child: Container(
+              height: height - height * 0.1 * 1.35,
+              width: width, 
+              child: Stack(
+                children: [
+                  MainScreenSubScreen(Center(child: Text("Home Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.home, previousElementAnimationComplete,isAnimating, onEnd),
+                  MainScreenSubScreen(Center(child: Text("Play Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.play, previousElementAnimationComplete,isAnimating, onEnd),
+                  MainScreenSubScreen(Center(child: Text("Account Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.account, previousElementAnimationComplete,isAnimating, onEnd),
+                  MainScreenSubScreen(Center(child: Text("Setting Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.settings, previousElementAnimationComplete,isAnimating, onEnd),
+                ],
+              ),
+            ),
           ),
           Positioned(
             bottom: 0,
@@ -52,6 +80,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 setState(() {
                                   currentPage = DifferentPages.home;
+                                  isAnimating = true;
                                 });
                               },
                               child: AnimatedContainer(
@@ -99,6 +128,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 setState(() {
                                   currentPage = DifferentPages.play;
+                                  isAnimating = true;
                                 });
                               },
                               child: AnimatedContainer(
@@ -146,6 +176,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 setState(() {
                                   currentPage = DifferentPages.account;
+                                  isAnimating = true;
                                 });
                               },
                               child: AnimatedContainer(
@@ -194,6 +225,7 @@ class _HomePageState extends State<HomePage> {
                               onTap: () {
                                 setState(() {
                                   currentPage = DifferentPages.settings;
+                                  isAnimating = true;
                                 });
                               },
                               child: AnimatedContainer(
