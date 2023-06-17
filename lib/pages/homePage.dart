@@ -151,21 +151,22 @@ class _HomePageState extends State<HomePage> {
                                             children: [
                                               Container(
                                                 height: height * 0.05,
-                                                width: width * 0.48,
+                                                width: item.title == "Join Discord" ? width * 0.48 : null,
                                                 child: FittedBox(
-                                                  fit: BoxFit.fitWidth,
+                                                  fit: item.title == "Join Discord" ? BoxFit.fitWidth : BoxFit.fitHeight,
                                                   child: Text(
                                                   item.title,
+                                                  textAlign: TextAlign.left,
                                                   style: const TextStyle(
                                                       color: Colors.white,
                                                       fontFamily: 'JustSans',
-                                                    
                                                       fontWeight:
                                                           FontWeight.bold),
                                                 ),
                                                 ),
                                               ),
-                                              Expanded(child: Container()),
+                                              item.title == "Join Discord" ?
+                                              Expanded(child: Container()):Container(width: width * 0.02),
                                               Image(
                                                 width: height * 0.035,
                                                 height: height * 0.035,
