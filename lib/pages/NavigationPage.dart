@@ -59,7 +59,7 @@ class NavigationPageState extends State<NavigationPage> {
                 children: [
                   MainScreenSubScreen(
                       const HomePage(),
-                      height - height * 0.1 * 1.35,
+                      height,
                       width,
                       currentPage,
                       DifferentPages.home,
@@ -72,7 +72,7 @@ class NavigationPageState extends State<NavigationPage> {
                         "Play Page",
                         style: TextStyle(color: Colors.white),
                       )),
-                      height - height * 0.1 * 1.35,
+                      height - height * 0.1,
                       width,
                       currentPage,
                       DifferentPages.discover,

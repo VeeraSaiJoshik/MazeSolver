@@ -91,3 +91,9 @@ flutter:
        - asset: fonts/JustSansRegular.otf
        - asset: fonts/JustSansBold.otf
          weight: 800
+   - family: ArgentumSans
+     fonts:
+       - asset: fonts/argentum-sans/ArgentumSans-Medium.ttf
+       - asset: fonts/argentum-sans/ArgentumSans-Bold.ttf
+         weight: 800
+       
