@@ -12,24 +12,27 @@ class NavigationPage extends StatefulWidget {
 }
 
 class NavigationPageState extends State<NavigationPage> {
-  @override
   late DifferentPages currentPage;
+  @override
   void initState() {
     currentPage = DifferentPages.home;
     super.initState();
   }
+
   bool previousElementAnimationComplete = false;
   bool isAnimating = false;
-  void onEnd(DifferentPages callingPageType){
+  void onEnd(DifferentPages callingPageType) {
     setState(() {
-      if(callingPageType == currentPage){
+      if (callingPageType == currentPage) {
         previousElementAnimationComplete = false;
-      }else{
+      } else {
         previousElementAnimationComplete = true;
         isAnimating = false;
       }
     });
   }
+
+  @override
   Widget build(BuildContext context) {
     double height = MediaQuery.of(context).size.height;
     double width = MediaQuery.of(context).size.width;
@@ -41,7 +44,7 @@ class NavigationPageState extends State<NavigationPage> {
             width: width,
             decoration: const BoxDecoration(
                 gradient: LinearGradient(colors: [
-              const Color.fromARGB(255, 23, 25, 33),
+              Color.fromARGB(255, 23, 25, 33),
               Color(0xFF000410),
               Color(0xFF000410),
             ], begin: Alignment.topLeft, end: Alignment.bottomRight)),
@@ -51,13 +54,57 @@ class NavigationPageState extends State<NavigationPage> {
             bottom: height * 0.1 * 1.35,
             child: Container(
               height: height - height * 0.1 * 1.35,
-              width: width, 
+              width: width,
               child: Stack(
                 children: [
-                  MainScreenSubScreen(HomePage(),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.home, previousElementAnimationComplete,isAnimating, onEnd),
-                  MainScreenSubScreen(Center(child: Text("Play Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.discover, previousElementAnimationComplete,isAnimating, onEnd),
-                  MainScreenSubScreen(Center(child: Text("Account Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.account, previousElementAnimationComplete,isAnimating, onEnd),
-                  MainScreenSubScreen(Center(child: Text("Setting Page", style: TextStyle(color: Colors.white),)),height - height * 0.1 * 1.35,width, currentPage, DifferentPages.settings, previousElementAnimationComplete,isAnimating, onEnd),
+                  MainScreenSubScreen(
+                      const HomePage(),
+                      height - height * 0.1 * 1.35,
+                      width,
+                      currentPage,
+                      DifferentPages.home,
+                      previousElementAnimationComplete,
+                      isAnimating,
+                      onEnd),
+                  MainScreenSubScreen(
+                      const Center(
+                          child: Text(
+                        "Play Page",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                      height - height * 0.1 * 1.35,
+                      width,
+                      currentPage,
+                      DifferentPages.discover,
+                      previousElementAnimationComplete,
+                      isAnimating,
+                      onEnd),
+                  MainScreenSubScreen(
+                      const Center(
+                          child: Text(
+                        "Account Page",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                      height - height * 0.1 * 1.35,
+                      width,
+                      currentPage,
+                      DifferentPages.account,
+                      previousElementAnimationComplete,
+                      isAnimating,
+                      onEnd),
+                  MainScreenSubScreen(
+                      const Center(
+                          child: Text(
+                        "Setting Page",
+                        style: TextStyle(color: Colors.white),
+                      )),
+                      height - height * 0.1 * 1.35,
+                      width,
+                      currentPage,
+                      DifferentPages.settings,
+                      previousElementAnimationComplete,
+                      isAnimating,
+                      onEnd),
                 ],
               ),
             ),
@@ -79,7 +126,7 @@ class NavigationPageState extends State<NavigationPage> {
                           children: [
                             InkWell(
                               onTap: () {
-                                if(currentPage != DifferentPages.home){
+                                if (currentPage != DifferentPages.home) {
                                   setState(() {
                                     currentPage = DifferentPages.home;
                                     isAnimating = true;
@@ -92,7 +139,7 @@ class NavigationPageState extends State<NavigationPage> {
                                   width: height * 0.1 * 0.55 / 38 * 36,
                                   decoration: BoxDecoration(
                                       color: currentPage == DifferentPages.home
-                                          ? Color(0xFF171920)
+                                          ? const Color(0xFF171920)
                                           : Colors.transparent,
                                       borderRadius: BorderRadius.circular(7)),
                                   child: Container(
@@ -106,8 +153,8 @@ class NavigationPageState extends State<NavigationPage> {
                                                     DifferentPages.home
                                                 ? 1
                                                 : 0,
-                                            duration:
-                                                Duration(milliseconds: 350),
+                                            duration: const Duration(
+                                                milliseconds: 350),
                                             child: Image.asset(
                                                 "assets/images/home/navigationLight/home.png"),
                                           ),
@@ -116,8 +163,8 @@ class NavigationPageState extends State<NavigationPage> {
                                                     DifferentPages.home
                                                 ? 0
                                                 : 1,
-                                            duration:
-                                                Duration(milliseconds: 350),
+                                            duration: const Duration(
+                                                milliseconds: 350),
                                             child: Image.asset(
                                                 "assets/images/home/navigationDark/home.png"),
                                           )
@@ -129,7 +176,7 @@ class NavigationPageState extends State<NavigationPage> {
                             Expanded(child: Container()),
                             InkWell(
                               onTap: () {
-                               if(currentPage != DifferentPages.discover){
+                                if (currentPage != DifferentPages.discover) {
                                   setState(() {
                                     currentPage = DifferentPages.discover;
                                     isAnimating = true;
@@ -141,9 +188,10 @@ class NavigationPageState extends State<NavigationPage> {
                                   height: height * 0.1 * 0.55,
                                   width: height * 0.1 * 0.55 / 38 * 36,
                                   decoration: BoxDecoration(
-                                      color: currentPage == DifferentPages.discover
-                                          ? Color(0xFF171920)
-                                          : Colors.transparent,
+                                      color:
+                                          currentPage == DifferentPages.discover
+                                              ? const Color(0xFF171920)
+                                              : Colors.transparent,
                                       borderRadius: BorderRadius.circular(7)),
                                   child: Container(
                                     padding: EdgeInsets.all(height * 0.014),
@@ -156,8 +204,8 @@ class NavigationPageState extends State<NavigationPage> {
                                                     DifferentPages.discover
                                                 ? 1
                                                 : 0,
-                                            duration:
-                                                Duration(milliseconds: 350),
+                                            duration: const Duration(
+                                                milliseconds: 350),
                                             child: Image.asset(
                                                 "assets/images/home/navigationLight/compass.png"),
                                           ),
@@ -166,8 +214,8 @@ class NavigationPageState extends State<NavigationPage> {
                                                     DifferentPages.discover
                                                 ? 0
                                                 : 1,
-                                            duration:
-                                                Duration(milliseconds: 350),
+                                            duration: const Duration(
+                                                milliseconds: 350),
                                             child: Image.asset(
                                                 "assets/images/home/navigationDark/compass.png"),
                                           )
@@ -179,7 +227,7 @@ class NavigationPageState extends State<NavigationPage> {
                             Expanded(child: Container()),
                             InkWell(
                               onTap: () {
-                                if(currentPage != DifferentPages.account){
+                                if (currentPage != DifferentPages.account) {
                                   setState(() {
                                     currentPage = DifferentPages.account;
                                     isAnimating = true;
@@ -193,7 +241,7 @@ class NavigationPageState extends State<NavigationPage> {
                                   decoration: BoxDecoration(
                                       color:
                                           currentPage == DifferentPages.account
-                                              ? Color(0xFF171920)
+                                              ? const Color(0xFF171920)
                                               : Colors.transparent,
                                       borderRadius: BorderRadius.circular(7)),
                                   child: Container(
@@ -207,8 +255,8 @@ class NavigationPageState extends State<NavigationPage> {
                                                     DifferentPages.account
                                                 ? 1
                                                 : 0,
-                                            duration:
-                                                Duration(milliseconds: 350),
+                                            duration: const Duration(
+                                                milliseconds: 350),
                                             child: Image.asset(
                                                 "assets/images/home/navigationLight/people.png"),
                                           ),
@@ -217,8 +265,8 @@ class NavigationPageState extends State<NavigationPage> {
                                                     DifferentPages.account
                                                 ? 0
                                                 : 1,
-                                            duration:
-                                                Duration(milliseconds: 350),
+                                            duration: const Duration(
+                                                milliseconds: 350),
                                             child: Image.asset(
                                                 "assets/images/home/navigationDark/people.png"),
                                           )
@@ -230,7 +278,7 @@ class NavigationPageState extends State<NavigationPage> {
                             Expanded(child: Container()),
                             InkWell(
                               onTap: () {
-                                if(currentPage != DifferentPages.settings){
+                                if (currentPage != DifferentPages.settings) {
                                   setState(() {
                                     currentPage = DifferentPages.settings;
                                     isAnimating = true;
@@ -244,7 +292,7 @@ class NavigationPageState extends State<NavigationPage> {
                                   decoration: BoxDecoration(
                                       color:
                                           currentPage == DifferentPages.settings
-                                              ? Color(0xFF171920)
+                                              ? const Color(0xFF171920)
                                               : Colors.transparent,
                                       borderRadius: BorderRadius.circular(7)),
                                   child: Container(
@@ -258,8 +306,8 @@ class NavigationPageState extends State<NavigationPage> {
                                                     DifferentPages.settings
                                                 ? 1
                                                 : 0,
-                                            duration:
-                                                Duration(milliseconds: 350),
+                                            duration: const Duration(
+                                                milliseconds: 350),
                                             child: Image.asset(
                                                 "assets/images/home/navigationLight/settings.png"),
                                           ),
@@ -268,8 +316,8 @@ class NavigationPageState extends State<NavigationPage> {
                                                     DifferentPages.settings
                                                 ? 0
                                                 : 1,
-                                            duration:
-                                                Duration(milliseconds: 350),
+                                            duration: const Duration(
+                                                milliseconds: 350),
                                             child: Image.asset(
                                                 "assets/images/home/navigationDark/settings.png"),
                                           )
