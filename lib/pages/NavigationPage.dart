@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:mindmystery/pages/DiscoverPage.dart';
+import 'package:mindmystery/pages/SettingsPage.dart';
 import 'package:mindmystery/pages/homePage.dart';
 import 'package:mindmystery/widgets/mainScreenSubScreen.dart';
 
@@ -55,7 +57,8 @@ class NavigationPageState extends State<NavigationPage> {
             child: Container(
               height: height - height * 0.1 * 1.35,
               width: width,
-              child: Stack(
+              child: IndexedStack(
+                index: currentPage.index,
                 children: [
                   MainScreenSubScreen(
                       const HomePage(),
@@ -67,11 +70,7 @@ class NavigationPageState extends State<NavigationPage> {
                       isAnimating,
                       onEnd),
                   MainScreenSubScreen(
-                      const Center(
-                          child: Text(
-                        "Play Page",
-                        style: TextStyle(color: Colors.white),
-                      )),
+                      DiscoverPage(),
                       height - height * 0.1,
                       width,
                       currentPage,
@@ -94,10 +93,7 @@ class NavigationPageState extends State<NavigationPage> {
                       onEnd),
                   MainScreenSubScreen(
                       const Center(
-                          child: Text(
-                        "Setting Page",
-                        style: TextStyle(color: Colors.white),
-                      )),
+                          child: SettingsPage()),
                       height - height * 0.1 * 1.35,
                       width,
                       currentPage,

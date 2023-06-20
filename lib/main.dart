@@ -1,7 +1,13 @@
 import 'package:flutter/material.dart';
 import 'package:mindmystery/pages/NavigationPage.dart';
+import 'package:supabase_flutter/supabase_flutter.dart';
 
-void main() {
+
+Future<void> main() async {
+  await Supabase.initialize(
+    url: "https://aoztgwgrszgbxfuqhkhp.supabase.co", 
+    anonKey: "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJzdXBhYmFzZSIsInJlZiI6ImFvenRnd2dyc3pnYnhmdXFoa2hwIiwicm9sZSI6ImFub24iLCJpYXQiOjE2ODcwMjcwMzAsImV4cCI6MjAwMjYwMzAzMH0.bs6e47oKCQboee7R79sEtBDLT2FKdF2KlTyx5cPJkp8"
+  );
   runApp(const MyApp());
 }
 
